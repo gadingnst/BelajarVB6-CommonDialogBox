@@ -60,13 +60,9 @@ Private Sub ClearScr()
     Cls
     With Label1
         .BackColor = &H8000000F
-        .Caption ""
+        .Caption = ""
         .Visible = False
     End With
-End Sub
-
-Private Sub Form_Load()
-
 End Sub
 
 Private Sub menuColor_Click()
