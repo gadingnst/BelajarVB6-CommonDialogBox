@@ -3,8 +3,8 @@ Object = "{F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0"; "COMDLG32.OCX"
 Begin VB.Form Form1 
    Caption         =   "Common Dialog"
    ClientHeight    =   3315
-   ClientLeft      =   120
-   ClientTop       =   765
+   ClientLeft      =   225
+   ClientTop       =   870
    ClientWidth     =   5595
    LinkTopic       =   "Form1"
    ScaleHeight     =   3315
@@ -69,6 +69,20 @@ Private Sub Form_Load()
 
 End Sub
 
+Private Sub menuColor_Click()
+    ClearScr
+    CommonDialog11.ShowColor
+    Label1.Visible = True
+    Label1.BackColor = CommonDialog1.Color
+    Print "Color"
+    Print
+    Print "Anda Memilih kode warna hexa : " + Hex$(CommonDialog1.Color)
+End Sub
+
+Private Sub menuExit_Click()
+    Unload Me
+End Sub
+
 Private Sub menuFont_Click()
     Dim ukuranFont As Long
     ClearScr
@@ -82,11 +96,11 @@ Private Sub menuFont_Click()
     End With
     Label1.ForeColor = CommonDialog1.Color
     Label1.FontStrikethru = CommonDialog1.FontStrikethru
-    ukuranFont = CommonDialog1.fontSize
+    ukuranFont = CommonDialog1.FontSize
     If ukuranFont > 48 Then
         Label1.Font.Size = 48
     Else
-        Label1.Font.Size = CommonDialog1.fontSize
+        Label1.Font.Size = CommonDialog1.FontSize
     End If
     Print "Font"
     Print
@@ -105,6 +119,14 @@ Private Sub menuOpen_Click()
     Print "File Open"
     Print
     Print "Anda Membuka FIle : " + CommonDialog1.FileName
+End Sub
+
+Private Sub menuPrint_Click()
+    ClearScr
+    CommonDialog1.ShowPrinter
+    Print "Print Setup"
+    Print
+    Print "Anda Telah mengatur Setup Printer"
 End Sub
 
 Private Sub menuSave_Click()
